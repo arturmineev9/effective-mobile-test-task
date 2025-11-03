@@ -1,17 +1,20 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt.plugin)
+
 }
 
 android {
-    namespace = "ru.itis.effectivemobiletesttask.app"
+    namespace = "ru.itis.effectivemobiletesttask"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
         applicationId = "ru.itis.effectivemobiletesttask"
-        minSdk = 26
+        minSdk = 28
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -38,12 +41,18 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core-ui"))
+    implementation(project(":features:feature-auth"))
+    implementation(project(":features:feature-main"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
+
+    implementation(libs.hilt)
+    ksp(libs.hilt.compiler)
 }
