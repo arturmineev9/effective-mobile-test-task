@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacing_8">8dp</dimen>
+    <dimen name="spacing_16">16dp</dimen>
+    <dimen name="spacing_24">24dp</dimen>
+    <dimen name="spacing_32">32dp</dimen>
+    <dimen name="spacing_48">48dp</dimen>
+
+    <dimen name="input_height">40dp</dimen>
+
+    <dimen name="social_button_height">40dp</dimen>
+    <dimen name="social_button_margin">8dp</dimen>
+
+    <dimen name="link_padding_horizontal">20dp</dimen>
+    <dimen name="link_padding_vertical">14dp</dimen>
+
+    <dimen name="divider_height">1dp</dimen>
+</resources>
