@@ -4,13 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "ru.itis.effectivemobiletesttask.feature_auth"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "ru.itis.effectivemobiletesttask.core_utils"
+    compileSdk = 36
 
     defaultConfig {
-        minSdk = 28
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -32,18 +30,13 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":core:core-ui"))
-    implementation(project(":core:core-utils"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
-    implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.lifecycle.viewmodel)
+    implementation(libs.coroutines)
 }

@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/core/core-database" />
             <option value="$PROJECT_DIR$/core/core-network" />
             <option value="$PROJECT_DIR$/core/core-ui" />
+            <option value="$PROJECT_DIR$/core/core-utils" />
             <option value="$PROJECT_DIR$/features" />
             <option value="$PROJECT_DIR$/features/feature-auth" />
             <option value="$PROJECT_DIR$/features/feature-main" />
