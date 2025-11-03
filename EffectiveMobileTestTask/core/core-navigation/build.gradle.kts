@@ -1,18 +1,14 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.ksp)
-    alias(libs.plugins.hilt.plugin)
 }
 
 android {
-    namespace = "ru.itis.effectivemobiletesttask.feature_auth"
-    compileSdk {
-        version = release(36)
-    }
+    namespace = "ru.itis.effectivemobiletesttask.core_navigation"
+    compileSdk = 36
 
     defaultConfig {
-        minSdk = 28
+        minSdk = 26
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -34,22 +30,9 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-    implementation(project(":features:feature-main"))
-    implementation(project(":core:core-navigation"))
-    implementation(project(":core:core-ui"))
-    implementation(project(":core:core-utils"))
-
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
     implementation(libs.androidx.navigation.fragment.ktx)
-    implementation(libs.androidx.navigation.ui.ktx)
-    implementation(libs.hilt)
-    ksp(libs.hilt.compiler)
 }

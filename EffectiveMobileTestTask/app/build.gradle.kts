@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.plugin)
-
+    alias(libs.plugins.navigation.safe.args)
 }
 
 android {
@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core-navigation"))
     implementation(project(":core:core-ui"))
     implementation(project(":features:feature-auth"))
     implementation(project(":features:feature-main"))
