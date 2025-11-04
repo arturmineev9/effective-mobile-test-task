@@ -14,7 +14,7 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="ru.itis.effectivemobiletesttask.feature_main.impl.MainFragment" />
+        android:name="ru.itis.effectivemobiletesttask.feature_main.impl.ui.MainFragment" />
 
     <fragment
         android:id="@+id/favoritesFragment"

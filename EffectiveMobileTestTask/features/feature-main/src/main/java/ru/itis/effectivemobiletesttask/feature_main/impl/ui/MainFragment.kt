@@ -1,4 +1,4 @@
-package ru.itis.effectivemobiletesttask.feature_main.impl
+package ru.itis.effectivemobiletesttask.feature_main.impl.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
