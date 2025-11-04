@@ -16,4 +16,12 @@
         android:id="@+id/mainFragment"
         android:name="ru.itis.effectivemobiletesttask.feature_main.impl.MainFragment" />
 
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="ru.itis.effectivemobiletesttask.favorites.impl.FavoriteFragment" />
+
+    <fragment
+        android:id="@+id/accountFragment"
+        android:name="ru.itis.effectivemobiletesttask.feature_account.AccountFragment" />
+
 </navigation>

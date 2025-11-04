@@ -1,11 +1,14 @@
 package ru.itis.effectivemobiletesttask
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.itis.effectivemobiletesttask.core_navigation.Nav
+import ru.itis.effectivemobiletesttask.databinding.ActivityMainBinding
 import ru.itis.effectivemobiletesttask.nav.NavImpl
 import javax.inject.Inject
 
@@ -13,25 +16,60 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), Nav.Provider {
 
     @Inject
-    lateinit var navImpl: NavImpl
+    lateinit var nav: Nav
 
-    private lateinit var navController: NavController
+    private var viewBinding: ActivityMainBinding? = null
+    private var navController: NavController? = null
+    private var mainContainer = R.id.main_container_id
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        viewBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(viewBinding?.root)
+        setupNavigation()
+        setupBottomNavigation()
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+    }
 
-        navImpl.setNavProvider(this)
+    private fun setupNavigation() {
+        if (navController == null) {
+            val navHost =
+                supportFragmentManager.findFragmentById(mainContainer) as NavHostFragment
+            navController = navHost.navController
+        }
+        nav.setNavProvider(navProvider = this)
+    }
+
+    private fun setupBottomNavigation() {
+        if (navController != null) {
+            navController!!.addOnDestinationChangedListener { _, destination, _ ->
+                when (destination.id) {
+                    R.id.mainFragment,
+                    R.id.favoritesFragment,
+                    R.id.accountFragment -> {
+                        viewBinding?.bottomNav?.visibility = View.VISIBLE
+                    }
+
+                    else -> {
+                        viewBinding?.bottomNav?.visibility = View.GONE
+                    }
+                }
+            }
+            viewBinding?.bottomNav?.setupWithNavController(navController!!)
+        }
+    }
+
+    override fun getNavController(): NavController? {
+        return navController
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        navImpl.clearNavProvider(this)
+        if (this::nav.isInitialized) {
+            nav.clearNavProvider(navProvider = this)
+        }
+        viewBinding = null
     }
 
-    override fun getNavController(): NavController = navController
 }
