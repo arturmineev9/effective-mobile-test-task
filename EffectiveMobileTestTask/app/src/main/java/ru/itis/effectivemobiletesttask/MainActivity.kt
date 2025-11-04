@@ -3,6 +3,8 @@ package ru.itis.effectivemobiletesttask
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -29,7 +31,8 @@ class MainActivity : AppCompatActivity(), Nav.Provider {
         setContentView(viewBinding?.root)
         setupNavigation()
         setupBottomNavigation()
-
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+        window.navigationBarColor = ContextCompat.getColor(this, ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark_gray)
     }
 
     private fun setupNavigation() {
