@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), Nav.Provider {
         setupBottomNavigation()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         window.navigationBarColor = ContextCompat.getColor(this, ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark)
+        window.statusBarColor = getColor(ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark)
     }
 
     private fun setupNavigation() {

@@ -1,4 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello main fragment</string>
+    <string name="course_title_placeholder">Java-разработчик с нуля</string>
+    <string name="course_description_placeholder">Освойте backend-разработку и программирование на Java, фреймворки Spring и Maven, работу с базами данных и API. Создайте свой собственный проект, собрав портфолио и став востребованным специалистом для любой IT компании.</string>
+    <string name="course_price_placeholder">999 ₽</string>
+    <string name="course_details">Подробнее</string>
+    <string name="course_rating_placeholder">4.9</string>
+    <string name="course_date_placeholder">22 Мая 2024</string>
 </resources>
