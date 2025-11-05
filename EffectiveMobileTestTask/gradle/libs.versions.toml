@@ -1,4 +1,5 @@
 [versions]
+adapterdelegates = "4.3.2"
 agp = "8.13.0"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
@@ -18,6 +19,10 @@ lifecycle = "2.9.0"
 safeArgs = "2.9.0"
 
 [libraries]
+adapterdelegates = { group = "com.hannesdorfmann", name = "adapterdelegates4", version.ref = "adapterdelegates" }
+adapterdelegates-kotlin-dsl = { group = "com.hannesdorfmann", name = "adapterdelegates4-kotlin-dsl", version.ref = "adapterdelegates" }
+adapterdelegates-kotlin-dsl-layoutcontainer = { group = "com.hannesdorfmann", name = "adapterdelegates4-kotlin-dsl-layoutcontainer", version.ref = "adapterdelegates" }
+adapterdelegates-kotlin-dsl-viewbinding = { group = "com.hannesdorfmann", name = "adapterdelegates4-kotlin-dsl-viewbinding", version.ref = "adapterdelegates" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -32,6 +37,7 @@ hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }
 coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -40,3 +46,6 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 navigation-safe-args = { id = "androidx.navigation.safeargs.kotlin", version.ref = "safeArgs" }
+
+[bundles]
+adapter-delegate = ["adapterdelegates", "adapterdelegates-kotlin-dsl", "adapterdelegates-kotlin-dsl-layoutcontainer", "adapterdelegates-kotlin-dsl-viewbinding"]

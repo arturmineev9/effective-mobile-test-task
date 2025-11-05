@@ -41,6 +41,7 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:core-common"))
     implementation(project(":core:core-ui"))
     implementation(project(":core:core-utils"))
 
@@ -48,5 +49,11 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.hilt)
+    implementation(libs.coroutines)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.lifecycle.viewmodel)
     ksp(libs.hilt.compiler)
+    implementation(libs.bundles.adapter.delegate)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
 }
