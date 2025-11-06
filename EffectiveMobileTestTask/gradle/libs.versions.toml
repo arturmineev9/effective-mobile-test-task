@@ -20,6 +20,7 @@ safeArgs = "2.9.0"
 okhttp = "4.12.0"
 retrofit = "2.11.0"
 logging-interceptor = "4.10.0"
+room_version = "2.6.1"
 
 [libraries]
 adapterdelegates = { group = "com.hannesdorfmann", name = "adapterdelegates4", version.ref = "adapterdelegates" }
@@ -45,6 +46,9 @@ androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecyc
 okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "logging-interceptor"}
+room = { group = "androidx.room", name = "room-runtime", version.ref = "room_version" }
+room-ksp = { group = "androidx.room", name = "room-compiler", version.ref = "room_version" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room_version" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

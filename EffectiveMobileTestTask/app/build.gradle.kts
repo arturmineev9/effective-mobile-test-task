@@ -42,6 +42,9 @@ android {
         viewBinding = true
     }
 }
+configurations.all {
+    exclude(group = "com.intellij", module = "annotations")
+}
 
 dependencies {
     implementation(project(":core:core-navigation"))

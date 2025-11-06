@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getCoursesUseCase: GetCoursesUseCase,
-    //private val toggleFavoriteUseCase: ToggleFavoriteUseCase
+    private val toggleFavoriteUseCase: ToggleFavoriteUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())
@@ -58,16 +58,14 @@ class MainViewModel @Inject constructor(
     }
 
     fun onFavoriteClick(course: Course) {
-        // Переключаем локально (UI-only пока)
-        val updatedCourses = _uiState.value.courses.map {
+        val updated = _uiState.value.courses.map {
             if (it.id == course.id) it.copy(hasLike = !it.hasLike) else it
         }
-        _uiState.value = _uiState.value.copy(courses = updatedCourses)
+        _uiState.value = _uiState.value.copy(courses = updated)
 
-        // TODO: сохранить в БД через toggleFavoriteUseCase
-        /*viewModelScope.launch {
-            toggleFavoriteUseCase(course.id)
-        }*/
+        viewModelScope.launch {
+            toggleFavoriteUseCase(course)
+        }
     }
 
     fun onSortClick() {
