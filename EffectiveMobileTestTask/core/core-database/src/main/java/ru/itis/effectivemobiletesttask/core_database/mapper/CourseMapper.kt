@@ -13,3 +13,14 @@ fun Course.toEntity() = FavoriteCourseEntity(
     startDate = startDate,
     publishDate = publishDate
 )
+
+fun FavoriteCourseEntity.toCourse() = Course(
+    id = id,
+    title = title,
+    text = text,
+    price = price,
+    rate = rate,
+    startDate = startDate,
+    hasLike = true,
+    publishDate = publishDate
+)

@@ -2,9 +2,8 @@ package ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
-import ru.itis.effectivemobiletesttask.core_common.model.Course
 
-class CoursesAdapter :
+class CourseAdapter :
     AsyncListDifferDelegationAdapter<CourseItemModel>(CourseDiffCallback()) {
 
     init {
@@ -19,4 +18,3 @@ class CoursesAdapter :
             oldItem == newItem
     }
 }
-
