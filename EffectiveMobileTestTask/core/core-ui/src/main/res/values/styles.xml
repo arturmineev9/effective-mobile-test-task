@@ -10,6 +10,7 @@
     <style name="TextBodySmall">
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">16sp</item>
         <item name="android:textColor">@color/color_white</item>
     </style>
 
@@ -40,4 +41,32 @@
         <item name="android:lineHeight">15sp</item>
         <item name="android:textColor">@color/color_white</item>
     </style>
+
+    <style name="TextCaption">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:lineHeight">14sp</item>
+        <item name="android:textColor">@color/color_white</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="android:background">@color/color_dark_gray</item>
+
+        <item name="itemIconTint">@color/bottom_nav_item_color</item>
+        <item name="itemTextColor">@color/bottom_nav_item_color</item>
+
+        <!-- Указываем наш стиль активного индикатора -->
+        <item name="itemActiveIndicatorStyle">@style/App.Custom.Indicator</item>
+
+        <item name="itemRippleColor">@null</item>
+    </style>
+
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <!-- Цвет овала вокруг активной иконки -->
+        <item name="android:color">@color/color_light_gray</item>
+
+    </style>
+
+
+
 </resources>

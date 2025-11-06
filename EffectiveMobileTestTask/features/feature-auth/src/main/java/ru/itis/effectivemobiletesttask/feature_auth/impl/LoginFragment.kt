@@ -9,16 +9,23 @@ import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.lifecycleScope
+import dagger.hilt.android.AndroidEntryPoint
+import ru.itis.effectivemobiletesttask.core_navigation.NavLoginScreen
 import ru.itis.effectivemobiletesttask.core_utils.observe
 import ru.itis.effectivemobiletesttask.feature_auth.databinding.FragmentLoginBinding
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: LoginViewModel by viewModels()
+
+    @Inject
+    lateinit var navLoginScreen: NavLoginScreen
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,6 +41,7 @@ class LoginFragment : Fragment() {
 
         setupObservers()
         setupClickListeners()
+        observeNavigation()
     }
 
     private fun setupObservers() {
@@ -53,23 +61,19 @@ class LoginFragment : Fragment() {
 
         binding.loginButton.setOnClickListener {
             viewModel.onLoginClicked()
-            //findNavController().navigate(R.id.action_loginFragment_to_mainFragment)
         }
 
-        binding.registerLink.setOnClickListener {
-            // TODO
-        }
+        binding.vkButton.setOnClickListener { openUrl("https://vk.com/") }
+        binding.okButton.setOnClickListener { openUrl("https://ok.ru/") }
+    }
 
-        binding.forgotPasswordLink.setOnClickListener {
-            // TODO
-        }
-
-        binding.vkButton.setOnClickListener {
-            openUrl("https://vk.com/")
-        }
-
-        binding.okButton.setOnClickListener {
-            openUrl("https://ok.ru/")
+    private fun observeNavigation() {
+        lifecycleScope.launchWhenStarted {
+            viewModel.navigation.collect { event ->
+                when (event) {
+                    LoginNavigationEvent.ToMainScreen -> navLoginScreen.goToMainScreen()
+                }
+            }
         }
     }
 

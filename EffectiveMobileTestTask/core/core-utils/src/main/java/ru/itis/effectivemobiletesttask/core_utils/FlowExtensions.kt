@@ -21,3 +21,15 @@ inline fun <T> Flow<T>.observe(
         }
     }
 }
+
+inline fun <T> Flow<T>.launchAndCollectIn(
+    lifecycleOwner: LifecycleOwner,
+    minActiveState: Lifecycle.State = Lifecycle.State.STARTED,
+    crossinline action: suspend (T) -> Unit
+) {
+    lifecycleOwner.lifecycleScope.launch {
+        lifecycleOwner.repeatOnLifecycle(minActiveState) {
+            collect { action(it) }
+        }
+    }
+}

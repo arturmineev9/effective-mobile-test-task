@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.ksp)
     alias(libs.plugins.hilt.plugin)
-
+    alias(libs.plugins.navigation.safe.args)
 }
 
 android {
@@ -38,12 +38,21 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        viewBinding = true
+    }
+}
+configurations.all {
+    exclude(group = "com.intellij", module = "annotations")
 }
 
 dependencies {
+    implementation(project(":core:core-navigation"))
     implementation(project(":core:core-ui"))
     implementation(project(":features:feature-auth"))
     implementation(project(":features:feature-main"))
+    implementation(project(":features:feature-favorites"))
+    implementation(project(":features:feature-account"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
