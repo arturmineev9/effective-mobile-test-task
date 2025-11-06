@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.itis.effectivemobiletesttask.core_utils.launchAndCollectIn
+import ru.itis.effectivemobiletesttask.feature_main.R
 import ru.itis.effectivemobiletesttask.feature_main.databinding.FragmentMainBinding
 import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CourseItemModel
 import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CoursesAdapter
@@ -46,6 +47,14 @@ class MainFragment : Fragment() {
                     onDetailsClick = { /* TODO */ }
                 )
             }
+
+            val sortText = if (state.isSorted) {
+                getString(R.string.original_format)
+            } else {
+                getString(R.string.sort_by_date_desc)
+            }
+            binding.sortButton.text = sortText
+
             if (state.error != null) {
                 Snackbar.make(binding.root, state.error, Snackbar.LENGTH_LONG).show()
             }

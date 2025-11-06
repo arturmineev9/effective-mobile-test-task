@@ -31,8 +31,10 @@ class MainViewModel @Inject constructor(
                 getCoursesUseCase().collect { courses ->
                     _uiState.value = _uiState.value.copy(
                         courses = courses,
+                        originalCourses = courses,
                         isLoading = false,
-                        error = null
+                        error = null,
+                        isSorted = false
                     )
                 }
             } catch (e: Exception) {
@@ -69,13 +71,27 @@ class MainViewModel @Inject constructor(
     }
 
     fun onSortClick() {
-        val sorted = _uiState.value.courses.sortedByDescending { it.publishDate }
-        _uiState.value = _uiState.value.copy(courses = sorted)
+        val currentState = _uiState.value
+        if (currentState.isSorted) {
+            _uiState.value = currentState.copy(
+                courses = currentState.originalCourses,
+                isSorted = false
+            )
+        } else {
+            val sorted = currentState.originalCourses
+                .sortedByDescending { it.publishDate }
+            _uiState.value = currentState.copy(
+                courses = sorted,
+                isSorted = true
+            )
+        }
     }
 }
 
 data class MainUiState(
     val courses: List<Course> = emptyList(),
+    val originalCourses: List<Course> = emptyList(),
     val isLoading: Boolean = false,
-    val error: String? = null
+    val error: String? = null,
+    val isSorted: Boolean = false
 )
