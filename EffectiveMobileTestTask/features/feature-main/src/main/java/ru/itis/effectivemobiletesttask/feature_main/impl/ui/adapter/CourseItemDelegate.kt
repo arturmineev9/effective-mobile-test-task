@@ -8,9 +8,19 @@ fun courseItemDelegate() =
     adapterDelegateViewBinding<CourseItemModel, CourseItemModel, ItemCourseBinding>(
         { layoutInflater, parent -> ItemCourseBinding.inflate(layoutInflater, parent, false) }
     ) {
-        bind {
+        bind { payloads ->
             val model = item
             with(binding) {
+                if (payloads.contains("likeChanged")) {
+                    val iconRes = if (model.course.hasLike) {
+                        R.drawable.ic_bookmark_filled
+                    } else {
+                        R.drawable.ic_bookmark
+                    }
+                    favoriteButton.setImageResource(iconRes)
+                    return@bind
+                }
+
                 titleText.text = model.course.title
                 descriptionText.text = model.course.text
                 priceText.text = context.getString(R.string.price_text, model.course.price)

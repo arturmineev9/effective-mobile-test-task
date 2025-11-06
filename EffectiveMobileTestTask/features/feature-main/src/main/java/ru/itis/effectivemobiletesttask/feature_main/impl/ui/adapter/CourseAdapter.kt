@@ -2,7 +2,6 @@ package ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.hannesdorfmann.adapterdelegates4.AsyncListDifferDelegationAdapter
-
 class CourseAdapter :
     AsyncListDifferDelegationAdapter<CourseItemModel>(CourseDiffCallback()) {
 
@@ -16,5 +15,13 @@ class CourseAdapter :
 
         override fun areContentsTheSame(oldItem: CourseItemModel, newItem: CourseItemModel): Boolean =
             oldItem == newItem
+
+        override fun getChangePayload(oldItem: CourseItemModel, newItem: CourseItemModel): Any? {
+            return if (oldItem.course.hasLike != newItem.course.hasLike) {
+                "likeChanged"
+            } else {
+                null
+            }
+        }
     }
 }
