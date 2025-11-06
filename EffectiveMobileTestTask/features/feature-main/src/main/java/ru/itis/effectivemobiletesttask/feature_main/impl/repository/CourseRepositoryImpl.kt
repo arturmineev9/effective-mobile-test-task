@@ -4,6 +4,7 @@ package ru.itis.effectivemobiletesttask.feature_main.impl.repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
 import ru.itis.effectivemobiletesttask.core_common.model.Course
@@ -20,19 +21,30 @@ class CourseRepositoryImpl @Inject constructor(
     private val favoriteRepository: FavoriteRepository
 ) : CourseRepository {
 
-    override fun getAllCourses(): Flow<List<Course>> {
-        val remoteFlow = flow {
+    private var initialCourses: List<Course>? = null
+
+    override fun getAllCourses(): Flow<List<Course>> = flow {
+        // 1. Загружаем из API один раз
+        if (initialCourses == null) {
             val dtos = remoteDataSource.fetchCourses()
-            emit(CourseMapper.mapList(dtos))
-        }
+            val courses = CourseMapper.mapList(dtos)
 
-        val favoriteFlow = favoriteRepository.getAllFavorites()
-            .map { it.map { entity -> entity.id } }.distinctUntilChanged()
-
-        return remoteFlow.combine(favoriteFlow) { courses, favoriteIds ->
-            courses.map { course ->
-                course.copy(hasLike = favoriteIds.contains(course.id))
+            // 2. Синхронизируем hasLike = true → Room
+            courses.filter { it.hasLike }.forEach { course ->
+                if (!favoriteRepository.isFavorite(course.id)) {
+                    favoriteRepository.insertFavorite(course)
+                }
             }
+
+            initialCourses = courses
         }
+
+        emit(initialCourses!!)
+    }.flatMapLatest { courses ->
+        // 3. Слушаем изменения в избранном и обновляем hasLike
+        favoriteRepository.getFavoriteIds()
+            .map { favoriteIds ->
+                courses.map { it.copy(hasLike = it.id in favoriteIds) }
+            }
     }
 }

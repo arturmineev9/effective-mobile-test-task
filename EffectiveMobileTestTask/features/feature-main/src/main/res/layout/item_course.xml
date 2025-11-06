@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/spacing_16"
+    android:layout_margin="@dimen/spacing_8"
     app:cardBackgroundColor="@color/color_dark_gray"
     android:foreground="@null"
     app:cardCornerRadius="@dimen/spacing_16">
@@ -34,7 +34,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!-- Rating & Date -->
         <LinearLayout
             android:id="@+id/infoContainer"
             android:layout_width="wrap_content"
@@ -46,7 +45,6 @@
             app:layout_constraintBottom_toBottomOf="@id/courseImageCardView"
             app:layout_constraintStart_toStartOf="parent">
 
-            <!-- Rating badge -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,7 +69,6 @@
                     style="@style/TextCaption" />
             </LinearLayout>
 
-            <!-- Date badge -->
             <TextView
                 android:id="@+id/dateText"
                 android:layout_width="wrap_content"
@@ -86,7 +83,6 @@
 
         </LinearLayout>
 
-        <!-- Favorite Button -->
         <ImageButton
             android:id="@+id/favoriteButton"
             android:layout_width="28dp"
@@ -99,7 +95,6 @@
             app:layout_constraintTop_toTopOf="@id/courseImageCardView"
             tools:ignore="ContentDescription" />
 
-        <!-- Content Area -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -144,6 +139,8 @@
                     android:layout_weight="1"
                     android:text="@string/course_price_placeholder"
                     android:textColor="@color/color_white"
+                    android:textSize="16sp"
+                    android:lineHeight="18sp"
                     style="@style/TextTitleMedium" />
 
                 <TextView
