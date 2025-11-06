@@ -27,8 +27,30 @@ class MainViewModel @Inject constructor(
 
     private fun loadCourses() {
         viewModelScope.launch {
-            getCoursesUseCase().collect { courses ->
-                _uiState.value = _uiState.value.copy(courses = courses)
+            try {
+                getCoursesUseCase().collect { courses ->
+                    _uiState.value = _uiState.value.copy(
+                        courses = courses,
+                        isLoading = false,
+                        error = null
+                    )
+                }
+            } catch (e: Exception) {
+                when (e) {
+                    is java.net.UnknownHostException,
+                    is java.io.IOException -> {
+                        _uiState.value = _uiState.value.copy(
+                            isLoading = false,
+                            error = "Нет подключения к интернету"
+                        )
+                    }
+                    else -> {
+                        _uiState.value = _uiState.value.copy(
+                            isLoading = false,
+                            error = "Ошибка загрузки данных"
+                        )
+                    }
+                }
             }
         }
     }
@@ -53,5 +75,7 @@ class MainViewModel @Inject constructor(
 }
 
 data class MainUiState(
-    val courses: List<Course> = emptyList()
+    val courses: List<Course> = emptyList(),
+    val isLoading: Boolean = false,
+    val error: String? = null
 )

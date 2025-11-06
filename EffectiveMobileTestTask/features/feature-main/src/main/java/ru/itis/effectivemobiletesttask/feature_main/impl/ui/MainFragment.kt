@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import ru.itis.effectivemobiletesttask.core_utils.launchAndCollectIn
 import ru.itis.effectivemobiletesttask.feature_main.databinding.FragmentMainBinding
@@ -44,6 +45,9 @@ class MainFragment : Fragment() {
                     onFavoriteClick = viewModel::onFavoriteClick,
                     onDetailsClick = { /* TODO */ }
                 )
+            }
+            if (state.error != null) {
+                Snackbar.make(binding.root, state.error, Snackbar.LENGTH_LONG).show()
             }
         }
     }
