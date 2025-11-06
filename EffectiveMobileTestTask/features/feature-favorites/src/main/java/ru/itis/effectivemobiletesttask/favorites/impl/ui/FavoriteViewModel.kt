@@ -10,10 +10,12 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import ru.itis.effectivemobiletesttask.core_common.model.Course
 import ru.itis.effectivemobiletesttask.favorites.api.usecase.GetFavoriteCoursesUseCase
+import ru.itis.effectivemobiletesttask.feature_main.api.usecase.ToggleFavoriteUseCase
 
 @HiltViewModel
 class FavoriteViewModel @Inject constructor(
-    private val getFavoriteCoursesUseCase: GetFavoriteCoursesUseCase
+    private val getFavoriteCoursesUseCase: GetFavoriteCoursesUseCase,
+    private val toggleFavoriteUseCase: ToggleFavoriteUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(FavoriteUiState())
@@ -32,7 +34,12 @@ class FavoriteViewModel @Inject constructor(
     }
 
     fun onFavoriteClick(course: Course) {
-        // TODO: убрать из избранного (опционально по ТЗ)
+        val updatedCourses = _uiState.value.courses.filter { it.id != course.id }
+        _uiState.value = _uiState.value.copy(courses = updatedCourses)
+
+        viewModelScope.launch {
+            toggleFavoriteUseCase(course)
+        }
     }
 }
 
