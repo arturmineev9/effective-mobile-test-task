@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import ru.itis.effectivemobiletesttask.core_utils.launchAndCollectIn
 import ru.itis.effectivemobiletesttask.feature_main.databinding.FragmentMainBinding
-import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CourseAdapter
 import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CourseItemModel
-
+import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CoursesAdapter
 
 @AndroidEntryPoint
 class MainFragment : Fragment() {
@@ -22,7 +21,7 @@ class MainFragment : Fragment() {
 
     private val viewModel: MainViewModel by viewModels()
 
-    private lateinit var adapter: CourseAdapter
+    private lateinit var adapter: CoursesAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,7 +34,6 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setupRecyclerView()
         setupClickListeners()
 
@@ -43,7 +41,7 @@ class MainFragment : Fragment() {
             adapter.items = state.courses.map { course ->
                 CourseItemModel(
                     course = course,
-                    onFavoriteClick = { viewModel.onFavoriteClick(it) },
+                    onFavoriteClick = viewModel::onFavoriteClick,
                     onDetailsClick = { /* TODO */ }
                 )
             }
@@ -51,13 +49,10 @@ class MainFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        adapter = CourseAdapter(
-            onFavoriteClick = {},
-            onDetailsClick = {}
-        )
+        adapter = CoursesAdapter()
         binding.coursesRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            this.adapter = this@MainFragment.adapter
+            adapter = this@MainFragment.adapter
         }
     }
 

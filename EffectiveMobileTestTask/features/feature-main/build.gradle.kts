@@ -42,6 +42,7 @@ android {
 
 dependencies {
     implementation(project(":core:core-common"))
+    implementation(project(":core:core-network"))
     implementation(project(":core:core-ui"))
     implementation(project(":core:core-utils"))
 
@@ -56,4 +57,5 @@ dependencies {
     implementation(libs.bundles.adapter.delegate)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
+    implementation(libs.bundles.network.deps)
 }
