@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="ru.itis.effectivemobiletesttask.favorites.impl.FavoriteFragment" />
+        android:name="ru.itis.effectivemobiletesttask.favorites.impl.ui.FavoriteFragment" />
 
     <fragment
         android:id="@+id/accountFragment"

@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/spacing_16"
     app:cardBackgroundColor="@color/color_dark_gray"
+    android:foreground="@null"
     app:cardCornerRadius="@dimen/spacing_16">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -96,7 +97,6 @@
             android:src="@drawable/ic_bookmark"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/courseImageCardView"
-            app:tint="@color/color_white"
             tools:ignore="ContentDescription" />
 
         <!-- Content Area -->
