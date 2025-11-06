@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     private val getCoursesUseCase: GetCoursesUseCase,
-    private val toggleFavoriteUseCase: ToggleFavoriteUseCase
+    //private val toggleFavoriteUseCase: ToggleFavoriteUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableStateFlow(MainUiState())

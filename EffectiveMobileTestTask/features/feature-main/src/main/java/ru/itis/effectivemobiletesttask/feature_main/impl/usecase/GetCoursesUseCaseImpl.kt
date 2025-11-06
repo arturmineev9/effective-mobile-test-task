@@ -9,6 +9,7 @@ import ru.itis.effectivemobiletesttask.core_common.model.Course
 import ru.itis.effectivemobiletesttask.core_utils.IoDispatchers
 import ru.itis.effectivemobiletesttask.feature_main.api.usecase.GetCoursesUseCase
 
+
 class GetCoursesUseCaseImpl @Inject constructor(
     @IoDispatchers private val coroutineDispatcher: CoroutineDispatcher,
 ) : GetCoursesUseCase {
