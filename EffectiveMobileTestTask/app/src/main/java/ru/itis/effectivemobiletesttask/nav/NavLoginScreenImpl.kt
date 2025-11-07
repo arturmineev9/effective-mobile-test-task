@@ -2,7 +2,6 @@ package ru.itis.effectivemobiletesttask.nav
 
 import ru.itis.effectivemobiletesttask.core_navigation.Nav
 import ru.itis.effectivemobiletesttask.core_navigation.NavLoginScreen
-import ru.itis.effectivemobiletesttask.feature_auth.impl.LoginFragment
 import ru.itis.effectivemobiletesttask.feature_auth.impl.LoginFragmentDirections
 import javax.inject.Inject
 

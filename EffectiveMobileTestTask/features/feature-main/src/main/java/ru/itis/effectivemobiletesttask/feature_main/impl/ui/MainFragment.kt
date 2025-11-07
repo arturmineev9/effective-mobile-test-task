@@ -44,8 +44,7 @@ class MainFragment : Fragment() {
             adapter.items = state.courses.map { course ->
                 CourseItemModel(
                     course = course,
-                    onFavoriteClick = viewModel::onFavoriteClick,
-                    onDetailsClick = { /* TODO */ }
+                    onFavoriteClick = viewModel::onFavoriteClick
                 )
             }
             binding.progressBar.isVisible = state.isLoading

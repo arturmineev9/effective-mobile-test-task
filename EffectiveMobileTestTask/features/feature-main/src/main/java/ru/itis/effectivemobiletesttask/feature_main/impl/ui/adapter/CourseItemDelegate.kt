@@ -2,8 +2,8 @@ package ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter
 
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 import ru.itis.effectivemobiletesttask.core_utils.DateFormatter
-import ru.itis.effectivemobiletesttask.feature_main.databinding.ItemCourseBinding
 import ru.itis.effectivemobiletesttask.feature_main.R
+import ru.itis.effectivemobiletesttask.feature_main.databinding.ItemCourseBinding
 
 fun courseItemDelegate() =
     adapterDelegateViewBinding<CourseItemModel, CourseItemModel, ItemCourseBinding>(
@@ -45,10 +45,6 @@ fun courseItemDelegate() =
 
                 favoriteButton.setOnClickListener {
                     model.onFavoriteClick(model.course)
-                }
-
-                detailText.setOnClickListener {
-                    model.onDetailsClick(model.course)
                 }
             }
         }

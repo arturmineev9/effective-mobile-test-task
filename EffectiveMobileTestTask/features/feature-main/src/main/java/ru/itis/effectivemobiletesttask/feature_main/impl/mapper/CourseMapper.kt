@@ -1,6 +1,5 @@
 package ru.itis.effectivemobiletesttask.feature_main.impl.mapper
 
-import android.util.Log
 import ru.itis.effectivemobiletesttask.core_common.model.Course
 import ru.itis.effectivemobiletesttask.feature_main.impl.remote.model.CourseDto
 

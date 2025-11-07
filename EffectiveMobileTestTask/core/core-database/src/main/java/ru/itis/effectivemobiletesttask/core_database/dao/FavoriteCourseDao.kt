@@ -1,6 +1,10 @@
 package ru.itis.effectivemobiletesttask.core_database.dao
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
 import ru.itis.effectivemobiletesttask.core_database.model.FavoriteCourseEntity
 

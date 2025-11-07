@@ -1,10 +1,9 @@
 package ru.itis.effectivemobiletesttask.nav
 
 import androidx.navigation.NavDirections
+import ru.itis.effectivemobiletesttask.core_navigation.Nav
 import javax.inject.Inject
 import javax.inject.Singleton
-import androidx.navigation.NavOptions
-import ru.itis.effectivemobiletesttask.core_navigation.Nav
 
 @Singleton
 class NavigatorDelegate @Inject constructor() {
