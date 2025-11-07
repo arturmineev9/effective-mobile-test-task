@@ -28,6 +28,8 @@ class MainViewModel @Inject constructor(
 
     private fun loadCourses() {
         viewModelScope.launch {
+            _uiState.value = _uiState.value.copy(isLoading = true, error = null)
+
             try {
                 getCoursesUseCase().collect { courses ->
                     _uiState.value = _uiState.value.copy(
@@ -39,21 +41,14 @@ class MainViewModel @Inject constructor(
                     )
                 }
             } catch (e: Exception) {
-                when (e) {
-                    is java.net.UnknownHostException,
-                    is java.io.IOException -> {
-                        _uiState.value = _uiState.value.copy(
-                            isLoading = false,
-                            error = "Нет подключения к интернету"
-                        )
+                _uiState.value = _uiState.value.copy(
+                    isLoading = false,
+                    error = if (e is java.net.UnknownHostException || e is java.io.IOException) {
+                        "Нет подключения к интернету"
+                    } else {
+                        "Ошибка загрузки данных"
                     }
-                    else -> {
-                        _uiState.value = _uiState.value.copy(
-                            isLoading = false,
-                            error = "Ошибка загрузки данных"
-                        )
-                    }
-                }
+                )
             }
         }
     }

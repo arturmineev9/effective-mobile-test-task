@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,7 @@ class FavoriteFragment : Fragment() {
         setupRecyclerView()
 
         viewModel.uiState.launchAndCollectIn(viewLifecycleOwner) { state ->
+            val isEmpty = state.courses.isEmpty()
             adapter.items = state.courses.map { course ->
                 CourseItemModel(
                     course = course,
@@ -43,6 +45,7 @@ class FavoriteFragment : Fragment() {
                     onDetailsClick = { }
                 )
             }
+            binding.emptyFavoriteText.isVisible = isEmpty
         }
     }
 

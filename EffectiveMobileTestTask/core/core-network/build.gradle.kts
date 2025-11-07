@@ -37,9 +37,10 @@ android {
 }
 
 dependencies {
-    implementation(libs.retrofit)
     implementation(libs.gson)
     implementation(libs.hilt)
     implementation(libs.logging.interceptor)
+    implementation(libs.retrofit)
+
     ksp(libs.hilt.compiler)
 }

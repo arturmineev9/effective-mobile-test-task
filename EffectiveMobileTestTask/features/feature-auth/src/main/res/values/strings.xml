@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="login_title">Вход</string>
-    <string name="login_email_label">Email</string>
-    <string name="login_email_hint">example@gmail.com</string>
-    <string name="login_password_label">Пароль</string>
-    <string name="login_password_hint">Введите пароль</string>
     <string name="login_button">Вход</string>
-    <string name="login_no_account">Нет аккаунта? </string>
-    <string name="login_register">Регистрация</string>
+    <string name="login_email_hint">example@gmail.com</string>
+    <string name="login_email_label">Email</string>
     <string name="login_forgot_password">Забыл пароль</string>
-    <string name="login_vk_button_content_description">VK</string>
+    <string name="login_no_account">Нет аккаунта? </string>
     <string name="login_ok_button_content_description">OK</string>
+    <string name="login_password_hint">Введите пароль</string>
+    <string name="login_password_label">Пароль</string>
+    <string name="login_register">Регистрация</string>
+    <string name="login_title">Вход</string>
+    <string name="login_vk_button_content_description">VK</string>
 </resources>

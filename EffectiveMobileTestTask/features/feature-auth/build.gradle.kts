@@ -41,16 +41,17 @@ android {
 }
 
 dependencies {
-    implementation(project(":features:feature-main"))
     implementation(project(":core:core-navigation"))
     implementation(project(":core:core-ui"))
     implementation(project(":core:core-utils"))
+    implementation(project(":features:feature-main"))
 
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.hilt)
+    implementation(libs.material)
+
     ksp(libs.hilt.compiler)
 }
