@@ -9,13 +9,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import ru.itis.effectivemobiletesttask.core_ui.WindowUtils
 import ru.itis.effectivemobiletesttask.core_utils.launchAndCollectIn
 import ru.itis.effectivemobiletesttask.favorites.databinding.FragmentFavoriteBinding
 import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CourseAdapter
 import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CourseItemModel
 
 @AndroidEntryPoint
-class FavoriteFragment : Fragment() {
+class FavoritesScreenFragment : Fragment() {
 
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
@@ -33,6 +34,7 @@ class FavoriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupBarsColor()
         setupRecyclerView()
 
         viewModel.uiState.launchAndCollectIn(viewLifecycleOwner) { state ->
@@ -47,11 +49,18 @@ class FavoriteFragment : Fragment() {
         }
     }
 
+    private fun setupBarsColor() {
+        WindowUtils.setSystemBarsColor(
+            requireActivity(),
+            ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark,
+            ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark_gray
+        )
+    }
     private fun setupRecyclerView() {
         adapter = CourseAdapter()
         binding.favoriteRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = this@FavoriteFragment.adapter
+            adapter = this@FavoritesScreenFragment.adapter
         }
     }
 

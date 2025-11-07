@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import ru.itis.effectivemobiletesttask.core_ui.WindowUtils
 import ru.itis.effectivemobiletesttask.core_utils.launchAndCollectIn
 import ru.itis.effectivemobiletesttask.feature_main.R
 import ru.itis.effectivemobiletesttask.feature_main.databinding.FragmentMainBinding
@@ -17,7 +18,7 @@ import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CourseItemMo
 import ru.itis.effectivemobiletesttask.feature_main.impl.ui.adapter.CourseAdapter
 
 @AndroidEntryPoint
-class MainFragment : Fragment() {
+class MainScreenFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -37,6 +38,7 @@ class MainFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupBarsColor()
         setupRecyclerView()
         setupClickListeners()
 
@@ -62,11 +64,19 @@ class MainFragment : Fragment() {
         }
     }
 
+    private fun setupBarsColor() {
+        WindowUtils.setSystemBarsColor(
+            requireActivity(),
+            ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark,
+            ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark_gray
+        )
+    }
+
     private fun setupRecyclerView() {
         adapter = CourseAdapter()
         binding.coursesRecyclerView.apply {
             layoutManager = LinearLayoutManager(context)
-            adapter = this@MainFragment.adapter
+            adapter = this@MainScreenFragment.adapter
         }
     }
 

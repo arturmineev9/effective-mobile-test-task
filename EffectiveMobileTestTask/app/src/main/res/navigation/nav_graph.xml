@@ -2,11 +2,11 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="ru.itis.effectivemobiletesttask.feature_auth.impl.LoginFragment">
+        android:name="ru.itis.effectivemobiletesttask.feature_auth.impl.LoginScreenFragment">
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
@@ -14,10 +14,10 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="ru.itis.effectivemobiletesttask.feature_main.impl.ui.MainFragment" />
+        android:name="ru.itis.effectivemobiletesttask.feature_main.impl.ui.MainScreenFragment" />
 
     <fragment
         android:id="@+id/favoritesFragment"
-        android:name="ru.itis.effectivemobiletesttask.favorites.impl.ui.FavoriteFragment" />
+        android:name="ru.itis.effectivemobiletesttask.favorites.impl.ui.FavoritesScreenFragment" />
 
 </navigation>

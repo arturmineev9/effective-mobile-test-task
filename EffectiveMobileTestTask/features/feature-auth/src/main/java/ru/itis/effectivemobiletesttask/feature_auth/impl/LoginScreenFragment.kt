@@ -12,12 +12,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import ru.itis.effectivemobiletesttask.core_navigation.NavLoginScreen
+import ru.itis.effectivemobiletesttask.core_ui.WindowUtils
 import ru.itis.effectivemobiletesttask.core_utils.observe
 import ru.itis.effectivemobiletesttask.feature_auth.databinding.FragmentLoginBinding
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class LoginFragment : Fragment() {
+class LoginScreenFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
@@ -38,12 +39,19 @@ class LoginFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        setupBarsColor()
         setupObservers()
         setupClickListeners()
         observeNavigation()
     }
 
+    private fun setupBarsColor() {
+        WindowUtils.setSystemBarsColor(
+            requireActivity(),
+            ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark,
+            ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark
+        )
+    }
     private fun setupObservers() {
         viewModel.isLoginEnabled.observe(viewLifecycleOwner) { isEnabled ->
             binding.loginButton.isEnabled = isEnabled
