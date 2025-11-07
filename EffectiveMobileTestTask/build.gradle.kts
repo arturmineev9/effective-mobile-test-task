@@ -7,3 +7,9 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.navigation.safe.args) apply false
 }
+
+private val versionMajor = 1
+private val versionMinor = 0
+
+val versionName by extra(initialValue = "$versionMajor.$versionMinor")
+val versionCode by extra(initialValue = versionMajor * 1000 + versionMinor * 10)
