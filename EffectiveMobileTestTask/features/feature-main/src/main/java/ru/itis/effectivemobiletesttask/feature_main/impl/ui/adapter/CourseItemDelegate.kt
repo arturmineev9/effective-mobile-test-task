@@ -35,6 +35,14 @@ fun courseItemDelegate() =
                 }
                 favoriteButton.setImageResource(iconRes)
 
+                val imageIndex = (model.course.id % 3).toInt()
+                val imageRes = when (imageIndex) {
+                    0 -> R.drawable.course_image_1
+                    1 -> R.drawable.course_image_2
+                    else -> R.drawable.course_image_3
+                }
+                binding.courseImage.setImageResource(imageRes)
+
                 favoriteButton.setOnClickListener {
                     model.onFavoriteClick(model.course)
                 }

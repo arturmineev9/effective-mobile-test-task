@@ -9,4 +9,6 @@
     <string name="price_text">%1$s ₽</string>
     <string name="sort_by_date_desc">По дате добавления</string>
     <string name="original_format">Исходный формат</string>
+    <string name="search_hint">Search courses...</string>
+    <string name="sort_by_date">По дате добавления</string>
 </resources>
