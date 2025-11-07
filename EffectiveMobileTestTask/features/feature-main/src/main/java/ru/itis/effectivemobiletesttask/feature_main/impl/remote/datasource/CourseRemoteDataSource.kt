@@ -1,7 +1,6 @@
 package ru.itis.effectivemobiletesttask.feature_main.impl.remote.datasource
 
 import jakarta.inject.Inject
-import jakarta.inject.Singleton
 import ru.itis.effectivemobiletesttask.feature_main.impl.remote.api.CourseApiService
 import ru.itis.effectivemobiletesttask.feature_main.impl.remote.model.CourseDto
 

@@ -8,11 +8,11 @@ plugins {
 android {
     namespace = "ru.itis.effectivemobiletesttask.core_database"
     compileSdk {
-        version = release(36)
+        version = release(libs.versions.compileSdk.get().toInt())
     }
 
     defaultConfig {
-        minSdk = 28
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -38,12 +38,14 @@ android {
 
 dependencies {
     implementation(project(":core:core-common"))
-    implementation(libs.androidx.core.ktx)
+
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.core.ktx)
     implementation(libs.hilt)
+    implementation(libs.material)
     implementation(libs.room)
     implementation(libs.room.ktx)
-    ksp(libs.room.ksp)
+
     ksp(libs.hilt.compiler)
+    ksp(libs.room.ksp)
 }

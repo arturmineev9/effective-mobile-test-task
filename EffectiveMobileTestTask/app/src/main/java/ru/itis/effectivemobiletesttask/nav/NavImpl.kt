@@ -21,4 +21,3 @@ class NavImpl @Inject constructor(
         navigatorDelegate.clearNavProvider(navProvider = navProvider)
     }
 }
-

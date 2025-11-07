@@ -5,10 +5,12 @@ plugins {
 
 android {
     namespace = "ru.itis.effectivemobiletesttask.core_navigation"
-    compileSdk = 36
+    compileSdk {
+        version = release(libs.versions.compileSdk.get().toInt())
+    }
 
     defaultConfig {
-        minSdk = 26
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")

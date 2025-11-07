@@ -9,11 +9,11 @@ plugins {
 android {
     namespace = "ru.itis.effectivemobiletesttask.feature_auth"
     compileSdk {
-        version = release(36)
+        version = release(libs.versions.compileSdk.get().toInt())
     }
 
     defaultConfig {
-        minSdk = 28
+        minSdk = libs.versions.minSdk.get().toInt()
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -41,16 +41,17 @@ android {
 }
 
 dependencies {
-    implementation(project(":features:feature-main"))
     implementation(project(":core:core-navigation"))
     implementation(project(":core:core-ui"))
     implementation(project(":core:core-utils"))
+    implementation(project(":features:feature-main"))
 
-    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
-    implementation(libs.material)
+    implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.navigation.fragment.ktx)
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.hilt)
+    implementation(libs.material)
+
     ksp(libs.hilt.compiler)
 }

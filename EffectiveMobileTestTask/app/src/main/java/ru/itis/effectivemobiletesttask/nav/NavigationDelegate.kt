@@ -1,16 +1,13 @@
 package ru.itis.effectivemobiletesttask.nav
 
 import androidx.navigation.NavDirections
+import ru.itis.effectivemobiletesttask.core_navigation.Nav
 import javax.inject.Inject
 import javax.inject.Singleton
-import androidx.navigation.NavOptions
-import ru.itis.effectivemobiletesttask.core_navigation.Nav
 
 @Singleton
 class NavigatorDelegate @Inject constructor() {
-
     private var navProvider: Nav.Provider? = null
-
     fun setNavProvider(navProvider: Nav.Provider) {
         this.navProvider = navProvider
     }
@@ -23,20 +20,5 @@ class NavigatorDelegate @Inject constructor() {
 
     fun navigate(directions: NavDirections) {
         navProvider?.getNavController()?.navigate(directions)
-    }
-
-    fun popBackStack(destinationId: Int, inclusive: Boolean) {
-        navProvider?.getNavController()?.popBackStack(destinationId, inclusive)
-    }
-
-    fun navigateWithPopUpTo(
-        directions: NavDirections,
-        popUpToDestinationId: Int,
-        inclusive: Boolean
-    ) {
-        val options = NavOptions.Builder()
-            .setPopUpTo(popUpToDestinationId, inclusive)
-            .build()
-        navProvider?.getNavController()?.navigate(directions, options)
     }
 }

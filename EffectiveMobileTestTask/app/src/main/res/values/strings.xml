@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">EffectiveMobileTestTask</string>
+    <string name="bottom_nav_account">Аккаунт</string>
+    <string name="bottom_nav_favorites">Избранное</string>
+    <string name="bottom_nav_main">Главная</string>
 </resources>

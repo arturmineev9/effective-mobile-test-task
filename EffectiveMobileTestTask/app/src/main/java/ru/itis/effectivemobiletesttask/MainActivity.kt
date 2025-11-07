@@ -3,20 +3,16 @@ package ru.itis.effectivemobiletesttask
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ru.itis.effectivemobiletesttask.core_navigation.Nav
 import ru.itis.effectivemobiletesttask.databinding.ActivityMainBinding
-import ru.itis.effectivemobiletesttask.nav.NavImpl
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Nav.Provider {
-
     @Inject
     lateinit var nav: Nav
 
@@ -31,9 +27,6 @@ class MainActivity : AppCompatActivity(), Nav.Provider {
         setContentView(viewBinding?.root)
         setupNavigation()
         setupBottomNavigation()
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        window.navigationBarColor = ContextCompat.getColor(this, ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark)
-        window.statusBarColor = getColor(ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark)
     }
 
     private fun setupNavigation() {

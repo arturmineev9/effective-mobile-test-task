@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_dark"
-    tools:context=".impl.LoginFragment">
+    tools:context=".impl.LoginScreenFragment">
 
     <TextView
         android:id="@+id/titleTextView"
@@ -173,7 +173,7 @@
         <ImageButton
             android:id="@+id/vkButton"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
             android:background="@drawable/btn_vk"
@@ -182,7 +182,7 @@
         <ImageButton
             android:id="@+id/okButton"
             android:layout_width="0dp"
-            android:layout_height="40dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:background="@drawable/btn_ok"
