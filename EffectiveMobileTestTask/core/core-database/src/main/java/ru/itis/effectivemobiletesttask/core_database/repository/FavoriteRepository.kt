@@ -1,6 +1,5 @@
 package ru.itis.effectivemobiletesttask.core_database.repository
 
-import android.util.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.itis.effectivemobiletesttask.core_common.model.Course
@@ -28,7 +27,6 @@ class FavoriteRepository @Inject constructor(
     }
 
     suspend fun insertFavorite(course: Course) {
-        Log.d("FavoriteDB", "INSERT: ${course.id} - ${course.title}")
         dao.insert(course.toEntity())
     }
 

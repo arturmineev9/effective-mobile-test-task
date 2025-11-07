@@ -6,7 +6,7 @@
     <string name="course_details">Подробнее</string>
     <string name="course_rating_placeholder">4.9</string>
     <string name="course_date_placeholder">22 Мая 2024</string>
-    <string name="price_text">%1$d ₽</string>
+    <string name="price_text">%1$s ₽</string>
     <string name="sort_by_date_desc">По дате добавления</string>
     <string name="original_format">Исходный формат</string>
 </resources>

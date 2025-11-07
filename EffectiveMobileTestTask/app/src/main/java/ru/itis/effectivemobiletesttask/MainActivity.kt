@@ -16,7 +16,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity(), Nav.Provider {
-
     @Inject
     lateinit var nav: Nav
 
@@ -31,9 +30,6 @@ class MainActivity : AppCompatActivity(), Nav.Provider {
         setContentView(viewBinding?.root)
         setupNavigation()
         setupBottomNavigation()
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        window.navigationBarColor = ContextCompat.getColor(this, ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark)
-        window.statusBarColor = getColor(ru.itis.effectivemobiletesttask.core_ui.R.color.color_dark)
     }
 
     private fun setupNavigation() {

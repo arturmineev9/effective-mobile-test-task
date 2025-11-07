@@ -1,9 +1,6 @@
 package ru.itis.effectivemobiletesttask.feature_main.impl.repository
 
-
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.flatMapLatest
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.map
@@ -24,12 +21,10 @@ class CourseRepositoryImpl @Inject constructor(
     private var initialCourses: List<Course>? = null
 
     override fun getAllCourses(): Flow<List<Course>> = flow {
-        // 1. Загружаем из API один раз
         if (initialCourses == null) {
             val dtos = remoteDataSource.fetchCourses()
             val courses = CourseMapper.mapList(dtos)
 
-            // 2. Синхронизируем hasLike = true → Room
             courses.filter { it.hasLike }.forEach { course ->
                 if (!favoriteRepository.isFavorite(course.id)) {
                     favoriteRepository.insertFavorite(course)
@@ -41,7 +36,6 @@ class CourseRepositoryImpl @Inject constructor(
 
         emit(initialCourses!!)
     }.flatMapLatest { courses ->
-        // 3. Слушаем изменения в избранном и обновляем hasLike
         favoriteRepository.getFavoriteIds()
             .map { favoriteIds ->
                 courses.map { it.copy(hasLike = it.id in favoriteIds) }

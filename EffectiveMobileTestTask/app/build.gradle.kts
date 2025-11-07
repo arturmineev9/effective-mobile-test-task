@@ -52,7 +52,6 @@ dependencies {
     implementation(project(":features:feature-auth"))
     implementation(project(":features:feature-main"))
     implementation(project(":features:feature-favorites"))
-    implementation(project(":features:feature-account"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

@@ -37,7 +37,6 @@ class LoginViewModel @Inject constructor() : ViewModel() {
     }
 
     fun onLoginClicked() {
-        Log.d("LoginViewModel", "onLoginClicked called")
         viewModelScope.launch {
             _navigation.emit(LoginNavigationEvent.ToMainScreen)
         }
